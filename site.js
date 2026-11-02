@@ -196,3 +196,71 @@
     v.addEventListener('error', function(){ /* fallback stays visible */ });
   });
 })();
+
+/* ---------- scroll progress bar ---------- */
+(function(){
+  var bar = document.getElementById('scrollProgress');
+  if(!bar) return;
+  function update(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* ---------- cursor follow on portfolio imagery ---------- */
+(function(){
+  if(window.matchMedia && window.matchMedia('(pointer:coarse)').matches) return;
+  var follower = document.getElementById('cursorFollow');
+  if(!follower) return;
+  var targets = document.querySelectorAll('.direction-card, .event-gallery figure img');
+  if(!targets.length) return;
+  var mx = 0, my = 0, fx = 0, fy = 0;
+  document.addEventListener('mousemove', function(e){ mx = e.clientX; my = e.clientY; });
+  function loop(){
+    fx += (mx - fx) * .18; fy += (my - fy) * .18;
+    follower.style.transform = 'translate(' + fx + 'px,' + fy + 'px) translate(-50%,-50%)';
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+  targets.forEach(function(t){
+    t.addEventListener('mouseenter', function(){
+      follower.textContent = (document.documentElement.lang === 'it') ? 'Guarda' : 'View';
+      follower.classList.add('show');
+    });
+    t.addEventListener('mouseleave', function(){ follower.classList.remove('show'); });
+  });
+})();
+
+/* ---------- count-up numbers ---------- */
+(function(){
+  var nodes = document.querySelectorAll('[data-count]');
+  if(!nodes.length) return;
+  function animate(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if(isNaN(target)) return;
+    var start = null, duration = 1200;
+    function step(ts){
+      if(start === null) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if(p < 1) requestAnimationFrame(step); else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+  if(!('IntersectionObserver' in window)){
+    nodes.forEach(function(el){ el.textContent = el.getAttribute('data-count'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ animate(e.target); io.unobserve(e.target); }
+    });
+  }, {threshold:.6});
+  nodes.forEach(function(el){ io.observe(el); });
+})();

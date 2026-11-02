@@ -182,11 +182,11 @@ section{padding:6.5rem 3rem;position:relative}
   padding:1rem 1.6rem;border:1px solid var(--rosso);color:var(--fg);
   background:var(--rosso);transition:all .3s;
 }
-.btn:hover{background:var(--rosso-dark);border-color:var(--rosso-dark);opacity:1}
+.btn:hover{background:var(--rosso-dark);border-color:var(--rosso-dark);opacity:1;transform:translateY(-3px);box-shadow:0 14px 30px -10px rgba(184,29,44,.55)}
 .btn.ghost{background:rgba(7,5,4,.35);color:var(--fg);border-color:var(--line-strong)}
-.btn.ghost:hover{border-color:var(--fg);background:rgba(7,5,4,.6)}
+.btn.ghost:hover{border-color:var(--fg);background:rgba(7,5,4,.6);box-shadow:0 14px 30px -12px rgba(0,0,0,.6)}
 .btn.outline-red{background:transparent;color:var(--rosso);border-color:var(--rosso)}
-.btn.outline-red:hover{background:var(--rosso);color:var(--fg)}
+.btn.outline-red:hover{background:var(--rosso);color:var(--fg);transform:translateY(-3px);box-shadow:0 14px 30px -10px rgba(184,29,44,.45)}
 
 /* ---------- AWARDS BAR ---------- */
 .awards-bar{
@@ -801,10 +801,58 @@ footer{
 /* ---------- REVEAL ---------- */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
+
+/* cinematic clip-path wipe for hero-weight images (applied to the inner
+   image, not the observed .reveal element itself — a clip-path on the
+   observed element collapses its visible area to zero, which stops
+   IntersectionObserver from ever reporting it as intersecting) */
+.img-wipe img{
+  clip-path:inset(0 0 0 100%);
+  transition:clip-path 1.15s cubic-bezier(.16,1,.3,1) .1s,transform .8s ease,filter .8s ease;
+}
+.img-wipe.in img{clip-path:inset(0 0 0 0%)}
+
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
+  .img-wipe img{clip-path:inset(0 0 0 0%);transition:none}
   .hero-bg{animation:none}
+  .hero-content .kicker,.hero h1,.hero-concept,.hero .tagline,.hero-actions,.hero-meta{
+    opacity:1;transform:none;animation:none;
+  }
 }
+
+/* ---------- SCROLL PROGRESS ---------- */
+#scrollProgress{
+  position:fixed;top:0;left:0;height:2.5px;width:0%;
+  background:linear-gradient(90deg,var(--rosso-dark),var(--rosso));
+  z-index:1000;transition:width .08s linear;
+}
+
+/* ---------- HERO ENTRANCE ---------- */
+.hero-content .kicker,.hero h1,.hero-concept,.hero .tagline,.hero-actions,.hero-meta{
+  opacity:0;transform:translateY(26px);
+  animation:heroUp 1.1s cubic-bezier(.16,1,.3,1) forwards;
+}
+.hero-content .kicker{animation-delay:.2s}
+.hero h1{animation-delay:.38s}
+.hero-concept{animation-delay:.6s}
+.hero .tagline{animation-delay:.76s}
+.hero-actions{animation-delay:.92s}
+.hero-meta{animation-delay:1.15s;transform:translateY(14px)}
+@keyframes heroUp{to{opacity:1;transform:translateY(0)}}
+
+/* ---------- CURSOR FOLLOW (portfolio images) ---------- */
+#cursorFollow{
+  position:fixed;top:0;left:0;z-index:999;pointer-events:none;
+  width:86px;height:86px;border-radius:50%;background:var(--rosso);color:var(--fg);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--sans);font-weight:500;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;
+  opacity:0;transform:translate(-50%,-50%) scale(.5);
+  transition:opacity .3s ease,transform .3s ease;
+  will-change:transform;
+}
+#cursorFollow.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+@media (pointer:coarse),(max-width:920px){#cursorFollow{display:none}}
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:1080px){
