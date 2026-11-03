@@ -802,23 +802,37 @@ footer{
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
 
-/* cinematic clip-path wipe for hero-weight images (applied to the inner
-   image, not the observed .reveal element itself — a clip-path on the
-   observed element collapses its visible area to zero, which stops
-   IntersectionObserver from ever reporting it as intersecting) */
-.img-wipe img{
-  clip-path:inset(0 0 0 100%);
-  transition:clip-path 1.15s cubic-bezier(.16,1,.3,1) .1s,transform .8s ease,filter .8s ease;
-}
-.img-wipe.in img{clip-path:inset(0 0 0 0%)}
-
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
-  .img-wipe img{clip-path:inset(0 0 0 0%);transition:none}
   .hero-bg{animation:none}
   .hero-content .kicker,.hero h1,.hero-concept,.hero .tagline,.hero-actions,.hero-meta{
     opacity:1;transform:none;animation:none;
   }
+}
+
+/* ---------- RACE INTRO (homepage, first visit only) ---------- */
+#raceIntro{
+  position:fixed;inset:0;z-index:2000;
+  background:var(--bg-deep);
+  display:flex;align-items:center;justify-content:center;
+  opacity:1;visibility:visible;
+  transition:opacity .5s ease,visibility .5s ease;
+}
+#raceIntro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.race-lights{display:flex;gap:1.3rem}
+.race-lights span{
+  width:15px;height:15px;border-radius:50%;
+  border:1px solid var(--line-strong);
+  background:rgba(244,240,230,.03);
+  box-shadow:none;
+  transition:background .12s ease,box-shadow .12s ease;
+}
+.race-lights span.lit{
+  background:var(--rosso);
+  box-shadow:0 0 20px 4px rgba(184,29,44,.7);
+}
+@media (prefers-reduced-motion:reduce){
+  #raceIntro{display:none}
 }
 
 /* ---------- SCROLL PROGRESS ---------- */

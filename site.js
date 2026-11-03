@@ -3,6 +3,36 @@
    nav · language toggle · reveal · carousel · lightbox · motion
    ============================================================ */
 
+/* ---------- race intro (homepage, first visit of the session only) ---------- */
+(function(){
+  var intro = document.getElementById('raceIntro');
+  if(!intro) return;
+  var seen = false;
+  try{ seen = sessionStorage.getItem('raceIntroShown') === '1'; }catch(e){}
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(seen || reduced){
+    intro.remove();
+    return;
+  }
+  try{ sessionStorage.setItem('raceIntroShown', '1'); }catch(e){}
+  var lights = intro.querySelectorAll('.race-lights span');
+  var i = 0;
+  function lightNext(){
+    if(i < lights.length){
+      lights[i].classList.add('lit');
+      i++;
+      setTimeout(lightNext, 165);
+    }else{
+      setTimeout(function(){
+        lights.forEach(function(l){ l.classList.remove('lit'); });
+        intro.classList.add('hide');
+        setTimeout(function(){ intro.remove(); }, 520);
+      }, 300);
+    }
+  }
+  setTimeout(lightNext, 150);
+})();
+
 /* ---------- nav scroll + mobile menu ---------- */
 (function(){
   var nav = document.getElementById('mainNav');
