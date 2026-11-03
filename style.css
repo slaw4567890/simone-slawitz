@@ -213,7 +213,7 @@ section{padding:6.5rem 3rem;position:relative}
 /* ---------- DIRECTION CARDS (home) ---------- */
 .direction-grid{
   max-width:1400px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;
 }
 .direction-card{
   position:relative;overflow:hidden;display:block;
@@ -855,22 +855,12 @@ footer{
 .hero-meta{animation-delay:1.15s;transform:translateY(14px)}
 @keyframes heroUp{to{opacity:1;transform:translateY(0)}}
 
-/* ---------- CURSOR FOLLOW (portfolio images) ---------- */
-#cursorFollow{
-  position:fixed;top:0;left:0;z-index:999;pointer-events:none;
-  width:86px;height:86px;border-radius:50%;background:var(--rosso);color:var(--fg);
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  font-family:var(--sans);font-weight:500;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;
-  opacity:0;transform:translate(-50%,-50%) scale(.5);
-  transition:opacity .3s ease,transform .3s ease;
-  will-change:transform;
-}
-#cursorFollow.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
-@media (pointer:coarse),(max-width:920px){#cursorFollow{display:none}}
-
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:1080px){
   .nav-links{gap:1.4rem;font-size:.58rem;letter-spacing:.24em}
+}
+@media(max-width:1180px){
+  .direction-grid{grid-template-columns:1fr}
 }
 @media(max-width:920px){
   nav{padding:1rem 1.4rem}
@@ -900,8 +890,6 @@ footer{
   .study-grid{grid-template-columns:1fr}
   .motion-fields{grid-template-columns:1fr;gap:.8rem}
   .motion-content{padding:5.5rem 1.4rem}
-  .motion-video-horizontal{display:none}
-  .motion-video-vertical{display:block;width:100vw;height:177.78vw;min-width:100%;min-height:100%}
   .manifesto-grid{grid-template-columns:1fr}
   .manifesto-card{border-right:none;border-bottom:1px solid var(--line)}
   .manifesto-card:last-child{border-bottom:none}

@@ -242,29 +242,6 @@
   update();
 })();
 
-/* ---------- cursor follow on portfolio imagery ---------- */
-(function(){
-  if(window.matchMedia && window.matchMedia('(pointer:coarse)').matches) return;
-  var follower = document.getElementById('cursorFollow');
-  if(!follower) return;
-  var targets = document.querySelectorAll('.direction-card, .event-gallery figure img');
-  if(!targets.length) return;
-  var mx = 0, my = 0, fx = 0, fy = 0;
-  document.addEventListener('mousemove', function(e){ mx = e.clientX; my = e.clientY; });
-  function loop(){
-    fx += (mx - fx) * .18; fy += (my - fy) * .18;
-    follower.style.transform = 'translate(' + fx + 'px,' + fy + 'px) translate(-50%,-50%)';
-    requestAnimationFrame(loop);
-  }
-  requestAnimationFrame(loop);
-  targets.forEach(function(t){
-    t.addEventListener('mouseenter', function(){
-      follower.textContent = (document.documentElement.lang === 'it') ? 'Guarda' : 'View';
-      follower.classList.add('show');
-    });
-    t.addEventListener('mouseleave', function(){ follower.classList.remove('show'); });
-  });
-})();
 
 /* ---------- count-up numbers ---------- */
 (function(){
