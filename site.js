@@ -59,6 +59,7 @@
 
 /* ---------- language toggle (persists across pages) ---------- */
 (function(){
+  if(document.documentElement.hasAttribute('data-static-lang')) return;
   var buttons = document.querySelectorAll('[data-lang-btn]');
   var translatable = document.querySelectorAll('[data-en][data-it]');
   function setLanguage(lang){
