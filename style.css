@@ -890,6 +890,8 @@ footer{
   .study-grid{grid-template-columns:1fr}
   .motion-fields{grid-template-columns:1fr;gap:.8rem}
   .motion-content{padding:5.5rem 1.4rem}
+  .motion-video-horizontal{display:none}
+  .motion-video-vertical{display:block;width:100vw;height:177.78vw;min-width:100%;min-height:100%}
   .manifesto-grid{grid-template-columns:1fr}
   .manifesto-card{border-right:none;border-bottom:1px solid var(--line)}
   .manifesto-card:last-child{border-bottom:none}
