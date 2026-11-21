@@ -54,7 +54,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&amp;family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="style.css?v=40f5351d"/>
+<link rel="stylesheet" href="style.css?v=0437793b"/>
 <link rel="icon" href="favicon.ico" sizes="any"/>
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32"/>
 <link rel="icon" href="favicon-16.png" type="image/png" sizes="16x16"/>
@@ -86,7 +86,7 @@
     <a href="motion.html" data-en="Motion" data-it="Motion">Motion</a>
     <a href="motorsport.html">Motorsport</a>
     <a href="luxury.html">Luxury</a>
-    <a href="about.html" data-en="About &amp; Press" data-it="Chi sono &amp; Press">About &amp; Press</a>
+    <a href="about.html" data-en="About &amp; Awards" data-it="Chi sono &amp; Premi">About &amp; Awards</a>
     <a class="nav-cta active" href="contact.html" data-en="Contact" data-it="Contatti">Contact</a>
   </div>
 </nav>
@@ -148,12 +148,13 @@
 </section>
 
 <!-- ========== CONTACT ========== -->
-<section style="background:var(--bg-deep);border-top:1px solid var(--line)">
+<section id="enquiry" style="background:var(--bg-deep);border-top:1px solid var(--line)">
   <div class="contact-grid">
     <div class="contact-left reveal">
       <div class="kicker" data-en="Direct line" data-it="Contatto diretto">Direct line</div>
       <h2 data-en="Tell me about <em>your project</em>." data-it="Raccontami <em>il tuo progetto</em>.">Tell me about <em>your project</em>.</h2>
       <p class="intro" data-en="Send a short note with the event or project, the location and the intended use of the images. I reply within 48 hours and treat every enquiry with discretion." data-it="Invia una breve nota con l'evento o il progetto, il luogo e l'utilizzo previsto delle immagini. Rispondo entro 48 ore e tratto ogni richiesta con discrezione.">Send a short note with the event or project, the location and the intended use of the images. I reply within 48 hours and treat every enquiry with discretion.</p>
+      <div class="trust-line" data-en="Bruno Boni Photo Contest winner <span>·</span> IPA Honorable Mention 2026 <span>·</span> Published by Classic Driver" data-it="Vincitore Concorso Bruno Boni <span>·</span> Menzione d'Onore IPA 2026 <span>·</span> Pubblicato da Classic Driver">Bruno Boni Photo Contest winner <span>·</span> IPA Honorable Mention 2026 <span>·</span> Published by Classic Driver</div>
       <div class="contact-direct">
         <div class="lbl" data-en="Direct enquiries" data-it="Richieste dirette">Direct enquiries</div>
         <a href="mailto:contact@simoneslawitz.com">contact@simoneslawitz.com</a>
@@ -189,13 +190,13 @@
         <label for="subject" data-en="Subject of enquiry" data-it="Oggetto della richiesta">Subject of enquiry</label>
         <select id="subject" name="subject" required>
           <option value="" data-en="— Select —" data-it="— Seleziona —">— Select —</option>
-          <option data-en="Driver / owner portrait" data-it="Ritratto pilota / proprietario">Driver / owner portrait</option>
-          <option data-en="Event coverage" data-it="Copertura evento">Event coverage</option>
-          <option data-en="Brand commission" data-it="Commissione brand">Brand commission</option>
-          <option data-en="Editorial collaboration" data-it="Collaborazione editoriale">Editorial collaboration</option>
-          <option data-en="Motion / video project" data-it="Progetto video / motion">Motion / video project</option>
-          <option data-en="Press &amp; interview" data-it="Press &amp; interviste">Press &amp; interview</option>
-          <option data-en="Other" data-it="Altro">Other</option>
+          <option data-topic="portrait" data-en="Driver / owner portrait" data-it="Ritratto pilota / proprietario">Driver / owner portrait</option>
+          <option data-topic="event" data-en="Event coverage" data-it="Copertura evento">Event coverage</option>
+          <option data-topic="brand" data-en="Brand commission" data-it="Commissione brand">Brand commission</option>
+          <option data-topic="editorial" data-en="Editorial collaboration" data-it="Collaborazione editoriale">Editorial collaboration</option>
+          <option data-topic="motion" data-en="Motion / video project" data-it="Progetto video / motion">Motion / video project</option>
+          <option data-topic="press" data-en="Press &amp; interview" data-it="Press &amp; interviste">Press &amp; interview</option>
+          <option data-topic="other" data-en="Other" data-it="Altro">Other</option>
         </select>
       </div>
       <div class="form-row">
@@ -234,7 +235,7 @@
     <a href="motion.html" data-en="Motion" data-it="Motion">Motion</a>
     <a href="motorsport.html">Motorsport</a>
     <a href="luxury.html">Luxury</a>
-    <a href="about.html" data-en="About &amp; Press" data-it="Chi sono &amp; Press">About &amp; Press</a>
+    <a href="about.html" data-en="About &amp; Awards" data-it="Chi sono &amp; Premi">About &amp; Awards</a>
     <a href="contact.html" data-en="Contact" data-it="Contatti">Contact</a>
   </div>
   <div class="colophon-fineprint">
@@ -242,7 +243,7 @@
   </div>
 </footer>
 
-<script src="site.js?v=15faa6c6"></script>
+<script src="site.js?v=c91445b2"></script>
 <script>
 /* translate the textarea placeholder alongside the language toggle */
 (function(){

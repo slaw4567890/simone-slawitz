@@ -98,7 +98,7 @@
 (function(){
   document.querySelectorAll('.event-gallery').forEach(function(gallery){
     var figures = gallery.querySelectorAll('figure');
-    if(figures.length < 2) return;
+    if(figures.length < 2 || gallery.classList.contains('is-grid')) return;
     figures.forEach(function(f,i){ f.classList.toggle('active', i===0); });
     var current = 0;
 
@@ -113,11 +113,45 @@
     counter.innerHTML = '<span class="cur">1</span> <span class="total">/ ' + figures.length + '</span>';
     gallery.appendChild(prev); gallery.appendChild(next); gallery.appendChild(counter);
 
+    /* thumbnail strip: shows how many frames each chapter holds */
+    var wrap = document.createElement('div');
+    wrap.className = 'gallery-wrap';
+    gallery.parentNode.insertBefore(wrap, gallery);
+    wrap.appendChild(gallery);
+    var strip = document.createElement('div');
+    strip.className = 'carousel-thumbs';
+    var thumbs = [];
+    figures.forEach(function(f, i){
+      var im = f.querySelector('img');
+      if(!im) return;
+      var full = im.getAttribute('src');
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'carousel-thumb' + (i === 0 ? ' active' : '');
+      b.setAttribute('aria-label', 'Photo ' + (i+1) + ' / ' + figures.length);
+      var t = document.createElement('img');
+      t.alt = ''; t.loading = 'lazy'; t.decoding = 'async';
+      t.src = 'thumbs/' + full;
+      t.onerror = function(){ t.onerror = null; t.src = full; };
+      b.appendChild(t);
+      b.addEventListener('click', function(){ goTo(i); });
+      strip.appendChild(b);
+      thumbs[i] = b;
+    });
+    wrap.appendChild(strip);
+
     function goTo(i){
       figures[current].classList.remove('active');
+      if(thumbs[current]) thumbs[current].classList.remove('active');
       current = (i + figures.length) % figures.length;
       figures[current].classList.add('active');
       counter.querySelector('.cur').textContent = current + 1;
+      var tb = thumbs[current];
+      if(tb){
+        tb.classList.add('active');
+        var left = tb.offsetLeft - (strip.clientWidth - tb.clientWidth) / 2;
+        strip.scrollTo({left: Math.max(0, left), behavior: 'smooth'});
+      }
     }
     prev.addEventListener('click', function(e){ e.stopPropagation(); goTo(current-1); });
     next.addEventListener('click', function(e){ e.stopPropagation(); goTo(current+1); });
@@ -271,4 +305,35 @@
     });
   }, {threshold:.6});
   nodes.forEach(function(el){ io.observe(el); });
+})();
+
+/* ---------- contact: preselect enquiry subject from ?topic= ---------- */
+(function(){
+  var select = document.getElementById('subject');
+  if(!select || !window.URLSearchParams) return;
+  var topic = new URLSearchParams(window.location.search).get('topic');
+  if(!topic) return;
+  var opt = select.querySelector('option[data-topic="' + topic.replace(/[^a-z-]/gi,'') + '"]');
+  if(opt) opt.selected = true;
+})();
+
+/* ---------- lite YouTube embed: loads the player only on click ---------- */
+(function(){
+  document.querySelectorAll('.yt-lite').forEach(function(box){
+    box.addEventListener('click', function(){
+      var id = box.getAttribute('data-yt');
+      if(!id || box.classList.contains('playing')) return;
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      f.title = box.getAttribute('data-title') || 'Video';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+      box.appendChild(f);
+      box.classList.add('playing');
+    });
+    box.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); box.click(); }
+    });
+  });
 })();
