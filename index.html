@@ -78,7 +78,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&amp;family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="style.css?v=a871fe36"/>
+<link rel="stylesheet" href="style.css?v=ecc56369"/>
 <link rel="icon" href="favicon.ico" sizes="any"/>
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32"/>
 <link rel="icon" href="favicon-16.png" type="image/png" sizes="16x16"/>
@@ -245,11 +245,13 @@
 <!-- ========== FEATURED FILM ========== -->
 <section class="film-feature">
   <div class="film-grid">
-    <div class="yt-lite reveal" data-yt="sOKp85vWnw4" data-title="Road to F4 — a film by Simone Slawitz" role="button" tabindex="0" aria-label="Play the film Road to F4">
-      <img src="road-to-f4.jpg" alt="Still from Road to F4, a short film by Simone Slawitz: a young driver and his coach studying the track map" loading="lazy" decoding="async"/>
-      <span class="yt-play" aria-hidden="true"></span>
-      <span class="yt-dur">1:41</span>
-    </div>
+    <div class="film-player reveal">
+    <video class="film-video" playsinline preload="none" poster="road-to-f4.jpg" aria-label="Road to F4 — a film by Simone Slawitz">
+      <source src="road-to-f4.mp4" type="video/mp4"/>
+    </video>
+    <button class="film-play" type="button" aria-label="Play the film Road to F4"><span class="yt-play" aria-hidden="true"></span></button>
+    <span class="yt-dur">1:41</span>
+  </div>
     <div class="film-text reveal">
       <div class="kicker" data-en="Featured Film · 2026" data-it="Film in Evidenza · 2026">Featured Film · 2026</div>
       <h2 data-en="Road to <em>F4</em>." data-it="Road to <em>F4</em>.">Road to <em>F4</em>.</h2>
@@ -388,6 +390,6 @@
   </div>
 </footer>
 
-<script src="site.js?v=c91445b2"></script>
+<script src="site.js?v=d4252d04"></script>
 </body>
 </html>
