@@ -317,23 +317,21 @@
   if(opt) opt.selected = true;
 })();
 
-/* ---------- lite YouTube embed: loads the player only on click ---------- */
+/* ---------- self-hosted film player: big play button over the poster ---------- */
 (function(){
-  document.querySelectorAll('.yt-lite').forEach(function(box){
-    box.addEventListener('click', function(){
-      var id = box.getAttribute('data-yt');
-      if(!id || box.classList.contains('playing')) return;
-      var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
-      f.title = box.getAttribute('data-title') || 'Video';
-      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      f.allowFullscreen = true;
-      f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
-      box.appendChild(f);
+  document.querySelectorAll('.film-player').forEach(function(box){
+    var v = box.querySelector('video');
+    var btn = box.querySelector('.film-play');
+    if(!v || !btn) return;
+    btn.addEventListener('click', function(){
+      var p = v.play();
+      if(p && p.catch) p.catch(function(){});
+    });
+    v.addEventListener('play', function(){
       box.classList.add('playing');
+      v.controls = true;
+      document.querySelectorAll('.film-player video').forEach(function(o){ if(o !== v && !o.paused) o.pause(); });
     });
-    box.addEventListener('keydown', function(e){
-      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); box.click(); }
-    });
+    v.addEventListener('ended', function(){ box.classList.remove('playing'); v.controls = false; v.load(); });
   });
 })();
