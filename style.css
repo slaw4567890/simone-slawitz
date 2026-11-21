@@ -945,6 +945,10 @@ html[data-static-lang] .lang-switch{display:none}
   font-family:var(--sans);font-weight:500;font-size:.56rem;letter-spacing:.24em;
   text-transform:uppercase;color:var(--fg);white-space:nowrap;transition:color .3s;
 }
+.laurel-org{
+  font-family:var(--italic);font-style:italic;font-size:.86rem;color:var(--fg-soft);
+  white-space:nowrap;margin-top:.18rem;letter-spacing:.01em;
+}
 
 /* recognition */
 .recognition{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -1136,6 +1140,7 @@ html[data-static-lang] .lang-switch{display:none}
 @media(max-width:920px){
   .hero-laurels{gap:.8rem 1.4rem;margin:-1rem auto 2rem}
   .laurel-name{font-size:.46rem;letter-spacing:.2em}
+  .laurel-org{font-size:.8rem}
   .offer-grid{grid-template-columns:1fr}
   .process{grid-template-columns:1fr}
   .process li{border-right:none;border-bottom:1px solid var(--line);padding:1.2rem .4rem}
@@ -1144,7 +1149,8 @@ html[data-static-lang] .lang-switch{display:none}
   .award-frame:nth-child(1),.award-frame:nth-child(2){margin:0}
 }
 @media(max-width:600px){
-  .hero-laurels{flex-direction:column;gap:.7rem}
+  .hero-laurels{flex-direction:column;gap:.9rem}
+  .laurel-org{white-space:normal;text-align:center;font-size:.78rem}
   .recognition-images{gap:.7rem}
   .award-cap{padding:2rem .8rem .8rem}
   .award-cap em{font-size:1rem}
