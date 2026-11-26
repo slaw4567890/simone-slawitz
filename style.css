@@ -327,6 +327,22 @@ section{padding:6.5rem 3rem;position:relative}
   color:var(--fg-muted);margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--line);
 }
 .upcoming-note{font-family:var(--italic);font-style:italic;color:var(--fg-soft);font-size:1rem;line-height:1.55}
+.upcoming-tags{max-width:1300px;margin:2.4rem auto 0}
+.upcoming-tags-label{
+  font-family:var(--sans);font-weight:500;font-size:.56rem;letter-spacing:.38em;text-transform:uppercase;
+  color:var(--fg-muted);margin-bottom:1.1rem;
+}
+.upcoming-tag-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.7rem}
+.upcoming-tag{
+  display:flex;flex-direction:column;gap:.35rem;
+  border:1px solid var(--line);background:var(--bg);padding:.8rem 1.1rem;
+  transition:border-color .3s;
+}
+.upcoming-tag:hover{border-color:var(--rosso)}
+.upcoming-tag-name{font-family:var(--serif);font-size:1.05rem;line-height:1.15}
+.upcoming-tag-meta{
+  font-family:var(--sans);font-weight:500;font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rosso-text);
+}
 
 /* ---------- PRESS ---------- */
 .press-stats{
