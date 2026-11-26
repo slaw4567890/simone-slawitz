@@ -342,3 +342,38 @@
   var on=function(){ b.classList.toggle('on', window.scrollY>window.innerHeight*0.9 && window.scrollY+window.innerHeight < document.body.scrollHeight-420); };
   window.addEventListener('scroll',on,{passive:true}); on();
 })();
+
+/* ---------- everything clickable ---------- */
+(function(){
+  /* contact: service cards select the topic and jump to the form */
+  document.querySelectorAll('.service-card[data-topic]').forEach(function(card){
+    var go=function(){
+      var sel=document.getElementById('subject');
+      if(sel){var o=sel.querySelector('option[data-topic="'+card.getAttribute('data-topic')+'"]'); if(o) sel.value=o.value||o.textContent.trim();
+        if(o) o.selected=true;}
+      var f=document.getElementById('enquiry'); if(f) f.scrollIntoView({behavior:'smooth'});
+      setTimeout(function(){var m=document.getElementById('fname'); if(m) m.focus({preventScroll:true});},700);
+    };
+    card.addEventListener('click',go);
+    card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
+  /* upcoming events: card or chip opens the enquiry with the event prefilled */
+  document.querySelectorAll('.upcoming-card, .upcoming-tag').forEach(function(el){
+    var nameEl=el.querySelector('.upcoming-name, .upcoming-tag-name'), dateEl=el.querySelector('.upcoming-date, .upcoming-tag-meta');
+    if(!nameEl) return;
+    var go=function(){
+      var q='contact.html?topic=event&event='+encodeURIComponent(nameEl.textContent.trim())+(dateEl?'&when='+encodeURIComponent(dateEl.textContent.trim()):'')+'#enquiry';
+      window.location.href=q;
+    };
+    el.setAttribute('tabindex','0'); el.setAttribute('role','link');
+    el.setAttribute('aria-label','Book '+nameEl.textContent.trim());
+    el.addEventListener('click',go);
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
+  /* contact: prefill the message from ?event= */
+  var ta=document.getElementById('message');
+  if(ta&&window.URLSearchParams){
+    var p=new URLSearchParams(location.search), ev=p.get('event');
+    if(ev&&!ta.value){ta.value='Event: '+ev+(p.get('when')?' ('+p.get('when')+')':'')+'\nWhat I need: ';}
+  }
+})();
