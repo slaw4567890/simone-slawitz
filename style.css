@@ -1377,3 +1377,43 @@ html body :is(h3,h4) em{font-weight:650}
   .hero h1{font-size:clamp(3rem,16vw,4.4rem)}
 }
 @media(max-height:820px){.hero-meta .scroll{display:none}.hero-content{padding-bottom:4rem}}
+
+/* ============================================================
+   Product-page storytelling (home) · 2026-11
+   backup: branch backup-pre-apple-marketing
+   ============================================================ */
+.statement{max-width:1180px;margin:0 auto;padding:9rem 2rem 4rem;text-align:center}
+.statement-text{font-size:clamp(2.6rem,7.2vw,6rem);font-weight:700;letter-spacing:-.045em;line-height:1.02;color:var(--fg)}
+.statement-text em{color:var(--rosso-text)}
+.statement-sub{max-width:44rem;margin:2.2rem auto 0;font-size:clamp(1.1rem,1.8vw,1.4rem);line-height:1.55;color:var(--fg-soft);letter-spacing:-.01em}
+.specs{max-width:1180px;margin:0 auto;padding:3rem 2rem 8rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.spec{display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.spec-num{font-size:clamp(3.2rem,7vw,5.6rem);font-weight:700;letter-spacing:-.05em;line-height:1;color:var(--fg);display:inline-flex;align-items:baseline}
+.spec-num small{font-size:.4em;font-weight:600;letter-spacing:0;margin-left:.1em;color:var(--rosso-text)}
+.spec-label{max-width:14rem;font-size:1rem;line-height:1.4;color:var(--fg-dim)}
+
+.inbox{margin:3.5rem auto 2.5rem;max-width:1180px}
+.inbox-title{font-size:1.5rem;font-weight:650;letter-spacing:-.025em;margin-bottom:1.4rem}
+.inbox-grid{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.inbox-grid li{background:var(--bg-3);border:1px solid var(--line);border-radius:22px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.6rem}
+.inbox-grid strong{font-size:1.1rem;font-weight:650;letter-spacing:-.02em;line-height:1.25;color:var(--fg)}
+.inbox-grid span{font-size:.95rem;line-height:1.55;color:var(--fg-dim)}
+
+/* softer, friendlier corners */
+.direction-card,.offer-card,.upcoming-card,.award-frame,.film-player,.visor-tile,.service-card,.event-gallery figure,.upcoming-tag{border-radius:22px;overflow:hidden}
+.direction-card{box-shadow:0 20px 60px -30px rgba(0,0,0,.8)}
+
+.sticky-cta{display:none}
+@media(max-width:920px){
+  .statement{padding:6rem 1.4rem 2.5rem}
+  .specs{grid-template-columns:repeat(2,1fr);padding:2rem 1.4rem 5rem;gap:2.4rem 1rem}
+  .inbox-grid{grid-template-columns:1fr 1fr}
+  .sticky-cta{
+    display:flex;position:fixed;left:50%;bottom:1.1rem;z-index:90;transform:translate(-50%,140%);
+    background:var(--rosso);color:#fff;border-radius:980px;padding:.85rem 1.6rem;font-size:1rem;font-weight:600;
+    box-shadow:0 12px 40px -8px rgba(184,29,44,.6);transition:transform .45s cubic-bezier(.2,.8,.2,1);white-space:nowrap
+  }
+  .sticky-cta.on{transform:translate(-50%,0)}
+}
+@media(max-width:600px){.inbox-grid{grid-template-columns:1fr}}
+.inbox{max-width:none;margin:3.5rem 0 0}

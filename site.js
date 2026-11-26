@@ -335,3 +335,10 @@
     v.addEventListener('ended', function(){ box.classList.remove('playing'); v.controls = false; v.load(); });
   });
 })();
+
+/* sticky "Check your date" pill (mobile, home): appears after the hero */
+(function(){
+  var b=document.querySelector('.sticky-cta'); if(!b) return;
+  var on=function(){ b.classList.toggle('on', window.scrollY>window.innerHeight*0.9 && window.scrollY+window.innerHeight < document.body.scrollHeight-420); };
+  window.addEventListener('scroll',on,{passive:true}); on();
+})();
