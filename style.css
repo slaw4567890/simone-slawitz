@@ -1289,3 +1289,91 @@ p,li{font-weight:400}
 }
 .direction-shade{background:linear-gradient(180deg,rgba(12,10,8,.1) 20%,rgba(7,5,4,.78) 55%,rgba(7,5,4,.95) 100%)}
 .direction-content .kicker{color:#f0c9a0;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+
+/* ============================================================
+   Type system v2 · 2026-11  (backup: branch backup-pre-apple-type)
+   One clean sans (SF Pro on Apple devices, Inter elsewhere),
+   bold confident headings, sentence-case labels, pill buttons.
+   ============================================================ */
+:root{
+  --serif:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter','Helvetica Neue',Arial,sans-serif;
+  --italic:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter','Helvetica Neue',Arial,sans-serif;
+  --sans:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter','Helvetica Neue',Arial,sans-serif;
+  --fg-soft:#ece7d9;
+}
+html{font-size:106.25%}
+*{font-style:normal !important}
+body{font-weight:400;font-size:1rem;line-height:1.6;letter-spacing:-.003em}
+
+/* headings: heavy, tight, high contrast */
+html body :is(h1,h2,h3,h4,.section-title,.upcoming-name,.press-feature-title,.event-info h2,.direction-content h2){
+  font-weight:650;letter-spacing:-.032em;line-height:1.06;
+}
+html body :is(h1,h2,.section-title) em{font-weight:650;color:var(--rosso-text)}
+html body :is(h3,h4) em{font-weight:650}
+.hero h1{font-weight:700;letter-spacing:-.045em;line-height:.95;font-size:clamp(3.4rem,10vw,8rem);text-shadow:0 2px 40px rgba(0,0,0,.5)}
+.hero h1 .last{font-weight:700;color:var(--fg)}
+.hero-concept{font-family:var(--sans);font-weight:500;font-size:clamp(1.3rem,2.6vw,2rem);letter-spacing:-.02em}
+.page-head h1{font-weight:700;letter-spacing:-.04em;line-height:1}
+.section-title{font-size:clamp(2.3rem,5vw,3.9rem)}
+
+/* body copy: strong, even, easy */
+:is(p,li,.section-desc,.lead,.recognition-lead,.upcoming-note,.press-feature-desc){font-weight:400;color:var(--fg-soft)}
+.section-desc,.lead,.recognition-lead{font-size:1.22rem;line-height:1.55;letter-spacing:-.01em}
+.event-info p,.split-text p,.service-card p,.prose p,.prose li{font-size:1.02rem;line-height:1.7}
+.upcoming-note,.laurel-org,.event-quote span:first-child{font-size:1.02rem;line-height:1.55;letter-spacing:-.005em}
+.event-quote span:first-child{font-size:1.15rem;font-weight:500;color:var(--fg)}
+.laurel-org{color:var(--fg-soft)}
+
+/* labels: sentence case, semibold, no shouting */
+.kicker,.event-chapter,.service-kicker,.form-eyebrow,.press-feature-eyebrow,.motion-field .motion-kicker,
+.upcoming-date,.direction-link,.offer-link,.press-feature-link,.upcoming-tags-label,.press-stat-label{
+  text-transform:none;letter-spacing:.005em;font-size:.9rem;font-weight:600;
+}
+.event-loc,.upcoming-loc,.figcap-meta,.aw-org,.contact-direct .lbl,.contact-form label,.social-platform,
+.study-tag,.study-meta,.trust-line,.film-facts span,.service-strip span,.quote-attr,.event-quote-attr,
+.press-year,.press-tag,.carousel-counter,.award-cap span,.hero-meta,.hero-meta span,.upcoming-tag-meta,.archive-no{
+  text-transform:none;letter-spacing:.01em;font-size:.84rem;font-weight:500;
+}
+.laurel-name{text-transform:none;letter-spacing:.01em;font-size:.82rem;font-weight:600}
+.laurel-year{font-weight:600;font-size:1.5rem;letter-spacing:-.02em}
+.award-ribbon,.award-ribbon strong{text-transform:none;letter-spacing:.01em;font-size:.8rem;font-weight:600}
+
+/* nav */
+.nav-links a,.nav-links{text-transform:none;letter-spacing:-.003em;font-size:.95rem;font-weight:500}
+.brand-name{text-transform:none;letter-spacing:-.01em;font-size:1rem;font-weight:650}
+.brand-name small{font-size:.82rem;font-weight:500;letter-spacing:0}
+.lang-switch button{font-size:.8rem;font-weight:600;letter-spacing:.04em}
+
+/* buttons: Apple-style pills */
+.btn,.form-submit,.nav-cta{
+  border-radius:980px;text-transform:none;letter-spacing:-.005em;font-size:1rem;font-weight:500;padding-left:1.7rem;padding-right:1.7rem;
+}
+.nav-cta{padding:.5rem 1.2rem;font-size:.9rem}
+.footer-nav a,.colophon-text,.colophon-fineprint{text-transform:none;letter-spacing:0;font-size:.9rem}
+.upcoming-tag-name{font-size:1.1rem;font-weight:600;letter-spacing:-.015em}
+.figcap-title,.award-cap em{font-weight:600;letter-spacing:-.015em}
+
+@media(max-width:920px){
+  html{font-size:100%}
+  .nav-links a{font-size:1.05rem}
+  .brand-name{font-size:.95rem}
+  .hero h1{font-size:clamp(3.2rem,15vw,5rem)}
+}
+
+/* hero fit (type v2) */
+.hero-content{padding-top:6.5rem;padding-bottom:5.5rem}
+.hero-laurels{flex-wrap:nowrap;margin:1.8rem auto 2.4rem}
+.laurel{padding:0 1.6rem}
+.laurel-org{font-size:.88rem;white-space:nowrap}
+.laurel-year{font-size:1.35rem}
+@media(max-height:820px){.hero h1{font-size:clamp(3rem,8vw,6.2rem)}}
+@media(max-width:1100px){.hero-laurels{flex-wrap:wrap;row-gap:1rem}}
+@media(max-width:600px){
+  .hero-content{padding-top:5.2rem;padding-bottom:6rem}
+  .hero-laurels{gap:.7rem;margin:1.2rem auto 1.6rem}
+  .laurel-org{white-space:normal;font-size:.82rem;max-width:15rem}
+  .hero-meta{display:none}
+  .hero h1{font-size:clamp(3rem,16vw,4.4rem)}
+}
+@media(max-height:820px){.hero-meta .scroll{display:none}.hero-content{padding-bottom:4rem}}
