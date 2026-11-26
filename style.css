@@ -1209,3 +1209,83 @@ html[data-static-lang] .lang-switch{display:none}
 .film-play:focus-visible{outline:2px solid var(--rosso-text);outline-offset:-6px}
 .film-play:hover .yt-play{transform:scale(1.08);background:var(--rosso)}
 .film-player.playing .film-play,.film-player.playing .yt-dur{display:none}
+
+/* ============================================================
+   Readability pass · 2026-11
+   Floor for micro labels, heavier body weight, brighter muted
+   greys, bigger Cormorant, 44px touch targets.
+   ============================================================ */
+:root{
+  --fg-soft:#e8e3d5;
+  --fg-dim:#bcb5a5;
+  --fg-muted:#aca595;
+}
+body{font-weight:400;line-height:1.7;text-rendering:optimizeLegibility}
+p,li{font-weight:400}
+.section-desc,.recognition-lead,.lead,.upcoming-note,.press-feature-desc,.event-quote span:first-child,.split-text p{font-weight:400}
+
+/* body copy */
+.event-info p,.split-text p,.service-card p,.offer-grid p,.process p,.film-brief p,.contact-direct p,.prose p,.prose li{
+  font-size:1.04rem;line-height:1.78;
+}
+.event-info p{max-width:62ch}
+/* Cormorant reads small: lift it */
+.section-desc,.lead{font-size:1.32rem;line-height:1.6}
+.recognition-lead{font-size:1.24rem;line-height:1.65}
+.upcoming-note{font-size:1.18rem;line-height:1.55}
+.laurel-org{font-size:1rem;color:var(--fg-soft)}
+.event-quote span:first-child{font-size:1.3rem;line-height:1.5}
+
+/* micro labels: nothing under 12px, calmer tracking */
+.kicker,.event-chapter,.event-loc,.service-kicker,.form-eyebrow,.contact-direct .lbl,.contact-form label,
+.upcoming-date,.upcoming-loc,.upcoming-tags-label,.press-feature-eyebrow,.press-stat-label,.press-year,.press-tag,
+.direction-link,.offer-link,.service-strip span,.quote-attr,.event-quote-attr,.social-platform,.study-tag,.study-meta,
+.motion-field .motion-kicker,.film-facts span,.trust-line,.carousel-counter,.press-feature-link,.seal-meta{
+  font-size:.76rem;letter-spacing:.16em;
+}
+.figcap-meta,.archive-no,.award-ribbon,.award-ribbon strong,.upcoming-tag-meta,.aw-org,.award-cap span,.yt-dur,
+.gallery-lightbox-meta,.gallery-lightbox-count,.split-image .plate,.study-hint,.service-list li{
+  font-size:.74rem;letter-spacing:.12em;
+}
+.laurel-name{font-size:.68rem;letter-spacing:.22em}
+.hero-meta,.hero-meta span,.colophon-fineprint,.footer-nav,.colophon-text{font-size:.74rem;letter-spacing:.14em}
+.nav-links a,.nav-links{font-size:.76rem;letter-spacing:.16em}
+.brand-name{font-size:.8rem}.brand-name small{font-size:.82rem}
+.btn,.form-submit{font-size:.78rem;letter-spacing:.18em}
+.lang-switch button{font-size:.72rem}
+.upcoming-tag-name{font-size:1.05rem}
+.contact-form input,.contact-form select,.contact-form textarea{font-size:1rem}
+
+/* colours that carried info but were too dim */
+.upcoming-loc,.upcoming-tags-label,.event-loc,.colophon-fineprint,.aw-org,.hero-meta,.footer-nav a{color:var(--fg-dim)}
+
+/* touch + focus */
+.btn,.form-submit,.nav-cta{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.footer-nav a{padding:.5rem .3rem}
+:focus-visible{outline:2px solid #e3cf9f;outline-offset:3px;border-radius:2px}
+
+@media(max-width:920px){
+  .laurel-name{font-size:.64rem;letter-spacing:.18em}
+  .laurel-org{font-size:.95rem}
+  .section-desc,.lead{font-size:1.22rem}
+  .event-info p,.split-text p{font-size:1.02rem}
+}
+@media(max-width:600px){
+  .kicker,.event-chapter,.upcoming-date{letter-spacing:.14em}
+  .hero-meta span{font-size:.7rem}
+}
+.lang-switch button{min-height:36px;min-width:40px}
+.nav-toggle{min-width:44px;min-height:44px}
+.colophon-fineprint a{display:inline-block;padding:.6rem .4rem}
+.hero-meta,.hero-meta span{font-size:.74rem}
+.laurel-name{font-size:.7rem}
+@media(max-width:920px){
+  nav{gap:.7rem}
+  .brand{gap:.6rem;min-width:0}
+  .brand-name{font-size:.66rem;letter-spacing:.2em}
+  .brand-name small{font-size:.74rem}
+  .monogram{width:36px;height:36px}
+  .nav-toggle{min-width:40px;padding:0;margin-right:-.4rem}
+}
+.direction-shade{background:linear-gradient(180deg,rgba(12,10,8,.1) 20%,rgba(7,5,4,.78) 55%,rgba(7,5,4,.95) 100%)}
+.direction-content .kicker{color:#f0c9a0;text-shadow:0 1px 8px rgba(0,0,0,.7)}
