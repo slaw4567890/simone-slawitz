@@ -948,17 +948,18 @@ html[data-static-lang] .lang-switch{display:none}
 /* hero laurels */
 .hero-laurels{
   display:flex;justify-content:center;align-items:center;flex-wrap:wrap;
-  gap:.6rem 2.2rem;margin:-1.4rem auto 2.6rem;
+  gap:.6rem 0;margin:2.2rem auto 2.8rem;
 }
-.laurel{display:flex;align-items:center;gap:.45rem;color:var(--fg)}
+.laurel{display:flex;align-items:center;gap:.7rem;color:var(--fg);padding:0 2.4rem;position:relative}
+.laurel+.laurel::before{content:"";position:absolute;left:0;top:50%;height:2.6rem;transform:translateY(-50%);width:1px;background:linear-gradient(transparent,rgba(201,169,106,.45),transparent)}
 .laurel:hover{opacity:1}
 .laurel:hover .laurel-name{color:var(--fg)}
-.laurel-svg{width:18px;height:36px;color:#c9a96a;flex-shrink:0;opacity:.9}
+.laurel-svg{width:16px;height:32px;color:#c9a96a;flex-shrink:0;opacity:.7}
 .laurel-svg.flip{transform:scaleX(-1)}
 .laurel-text{display:flex;flex-direction:column;align-items:center;line-height:1.15;text-shadow:0 2px 10px rgba(0,0,0,.6)}
-.laurel-year{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:#e3cf9f}
+.laurel-year{font-family:var(--serif);font-style:italic;font-size:1.45rem;color:#e3cf9f;letter-spacing:.02em}
 .laurel-name{
-  font-family:var(--sans);font-weight:500;font-size:.56rem;letter-spacing:.24em;
+  font-family:var(--sans);font-weight:500;font-size:.54rem;letter-spacing:.3em;margin-top:.1rem;
   text-transform:uppercase;color:var(--fg);white-space:nowrap;transition:color .3s;
 }
 .laurel-org{
@@ -1154,7 +1155,8 @@ html[data-static-lang] .lang-switch{display:none}
   .visor-strip{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:920px){
-  .hero-laurels{gap:.8rem 1.4rem;margin:-1rem auto 2rem}
+  .hero-laurels{gap:.8rem 0;margin:1.6rem auto 2rem}
+  .laurel{padding:0 1.2rem}
   .laurel-name{font-size:.46rem;letter-spacing:.2em}
   .laurel-org{font-size:.8rem}
   .offer-grid{grid-template-columns:1fr}
@@ -1165,7 +1167,9 @@ html[data-static-lang] .lang-switch{display:none}
   .award-frame:nth-child(1),.award-frame:nth-child(2){margin:0}
 }
 @media(max-width:600px){
-  .hero-laurels{flex-direction:column;gap:.9rem}
+  .hero-laurels{flex-direction:column;gap:1.1rem}
+  .laurel{padding:0}
+  .laurel+.laurel::before{display:none}
   .laurel-org{white-space:normal;text-align:center;font-size:.78rem}
   .recognition-images{gap:.7rem}
   .award-cap{padding:2rem .8rem .8rem}
